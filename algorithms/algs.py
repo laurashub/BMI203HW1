@@ -20,7 +20,14 @@ def bubblesort(x):
     return x
 
 def insertionsort(x):
+    for i in range(len(x)):
+        element = x[i]
+        for j in range(len(x)):
+            if x[j] > element:
+                x = np.delete(x, i)
+                x = np.insert(x, j, [element])
     return x
+
 
 def quicksort(x):
     """
@@ -29,4 +36,5 @@ def quicksort(x):
 
     assert 1 == 1
     return
+
 
