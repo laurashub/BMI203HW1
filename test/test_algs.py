@@ -1,34 +1,34 @@
 import numpy as np
-from example import algs
+from algorithms import algs
 
-def test_pointless_sort():
-    # generate random vector of length 10
-    x = np.random.rand(10)
+"""
+ Some cases to think of: 
+ Empty vector 
+ Single element vector 
+ Duplicated elements 
+ Odd vs even length of input vector 
+"""
 
-    # check that pointless_sort always returns [1,2,3]
-    assert np.array_equal(algs.pointless_sort(x), np.array([1,2,3]))
-
-    # generate a new random vector of length 10
-    x = np.random.rand(10)
-
-    # check that pointless_sort still returns [1,2,3]
-    assert np.array_equal(algs.pointless_sort(x), np.array([1,2,3]))
+def is_sorted(x):
+    return all(x[i] <= x[i+1] for i in range(len(x)-1))
 
 def test_bubblesort():
-    # Actually test bubblesort here. It might be useful to think about
-    # some edge cases for your code, where it might fail. Some things to
-    # think about: (1) does your code handle 0-element arrays without
-    # failing, (2) does your code handle characters?
+    assert is_sorted(algs.bubblesort(np.random.rand(5))) #normal odd case
+    assert is_sorted(algs.bubblesort(np.random.rand(6))) #normal even case
+    assert is_sorted(algs.bubblesort(np.random.rand(1))) #single element vector
+    assert is_sorted(algs.bubblesort(np.array([]))) #empty vector
+    assert is_sorted(algs.bubblesort(np.array([5, 5, 4, 4, 3, 3, 2, 2, 1, 1]))) #duplicated elements
 
-    x = np.array([1,2,4,0,1])
-    
-    # for now, just attempt to call the bubblesort function, should
-    # actually check output
-    algs.bubblesort(x)
+def test_insertionsort():
+    assert is_sorted(algs.insertionsort(np.random.rand(5))) #normal odd case
+    assert is_sorted(algs.insertionsort(np.random.rand(6))) #normal even case
+    assert is_sorted(algs.insertionsort(np.random.rand(1))) #single element vector
+    assert is_sorted(algs.insertionsort(np.array([]))) #empty vector
+    assert is_sorted(algs.insertionsort(np.array([5, 5, 4, 4, 3, 3, 2, 2, 1, 1]))) #duplicated elements
 
 def test_quicksort():
-
-    x = np.array([1,2,4,0,1])
-    # for now, just attempt to call the quicksort function, should
-    # actually check output
-    algs.quicksort(x)
+    assert is_sorted(algs.quicksort(np.random.rand(5))) #normal odd case
+    assert is_sorted(algs.quicksort(np.random.rand(6))) #normal even case
+    assert is_sorted(algs.quicksort(np.random.rand(1))) #single element vector
+    assert is_sorted(algs.quicksort(np.array([]))) #empty vector
+    assert is_sorted(algs.quicksort(np.array([5, 5, 4, 4, 3, 3, 2, 2, 1, 1]))) #duplicated elements

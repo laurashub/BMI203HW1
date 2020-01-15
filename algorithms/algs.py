@@ -1,12 +1,5 @@
 import numpy as np
 
-def pointless_sort(x):
-    """
-    This function always returns the same values to show how testing
-    works, check out the `test/test_alg.py` file to see.
-    """
-    return np.array([1,2,3])
-
 def bubblesort(x):
     """
     Describe how you are sorting `x`
@@ -33,8 +26,28 @@ def quicksort(x):
     """
     Describe how you are sorting `x`
     """
+    return(quicksort_helper(x, 0, len(x)-1))
 
-    assert 1 == 1
-    return
+
+def quicksort_helper(x, p, r):
+    if p < r:
+        q = partition(x, p, r)
+        quicksort_helper(x, p, q - 1)
+        quicksort_helper(x, q + 1, r)
+    return x
+
+def partition(x, p, r):
+    pivot = x[r] #set pivot to be the last element in the current array
+    i = p - 1 #
+    for j in range(p, r):
+        if x[j] <= pivot:
+            i += 1
+            temp = x[i]
+            x[i] = x[j]
+            x[j] = temp
+    x[r] = x[i+1]
+    x[i+1] = pivot
+    return i+1
+
 
 
