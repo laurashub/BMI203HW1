@@ -8,7 +8,17 @@ import timeit
 from .algs import quicksort, insertionsort, bubblesort
 
 def run_stuff():
-	x_vals = list(range(100, 1001, 100))
+
+	functions = [insertionsort, bubblesort, quicksort]
+	func_names = ["InsertionSort", "BubbleSort", "QuickSort"]
+	timing_data = []
+	for name, func in zip(func_names, functions):
+		count_stuff(name, func)
+		timing_data.append(time_sort(func))
+	#x_vals = list(range(100, 1001, 100))
+	#test = np.random.rand(10)
+	#print(bubblesort(test, count = True))
+	#print(insertionsort(test, count = True))
 	#print(x_vals)
 	#bubble_time = time_sort(bubblesort)
 	#plt.plot(x_vals, bubble_time)
@@ -16,6 +26,9 @@ def run_stuff():
 	#insert_time = time_sort(insertionsort)
 	#quick_time = time_sort(quicksort)
 
+def count_stuff(name, func):
+	test = np.random.rand(10)
+	print("{0}: {1} {2}".format(name, *func(test, count = True)))
 
 def time_sort(func):
 	timing_data = []
