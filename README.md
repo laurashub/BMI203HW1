@@ -1,7 +1,7 @@
 # algorithms
 
 [![Build
-Status](https://travis-ci.org/laurashub/BMI203HW1svg?branch=master)](https://travis-ci.org/laurashub/BMI203HW1)
+Status](https://travis-ci.org/laurashub/BMI203HW1.svg?branch=master)](https://travis-ci.org/laurashub/BMI203HW1)
 
 Example python project with testing.
 
