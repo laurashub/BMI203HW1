@@ -31,8 +31,6 @@ def run_stuff():
 			ax[i].plot(x_vals, timing_data[name], label=name)
 			for n, vals in fit_lines(x_vals, timing_data[name]):
 				ax[i].plot(x_vals, vals, '--', label=n)
-			#complex_func, name, vals = fit_lines(x_vals, timing_data[name])
-			#ax[i].plot(x_vals, complex_func(x_vals, *vals), '--', label='Best fit: ' + name)
 			ax[i].legend()
 			ax[i].set_title(name)
 	ax[0].legend()
