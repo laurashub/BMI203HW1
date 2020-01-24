@@ -1,11 +1,12 @@
 import numpy as np
 
 #Count the number of assignments 
-# Count the number of conditionals 
+#Count the number of conditionals 
 
 def bubblesort(x, count = False):
     """
-    Describe how you are sorting `x`
+    For each element e in x, compare it to its right neighbor. If e is larger,
+    switch them. Continue until you reach the end of the array or a larger value.
     """
     assignments = 0
     conditionals = 0
@@ -23,6 +24,10 @@ def bubblesort(x, count = False):
         return assignments, conditionals
 
 def insertionsort(x, count = False):
+    """
+    For each element e of x, move through the array until you come to a value 
+    that is less than e, or the end of the array, then place e at the new location.
+    """
     assignments, conditionals = 0, 0
     for i in range(1, len(x)):
         element = x[i]
@@ -42,7 +47,9 @@ def insertionsort(x, count = False):
 
 def quicksort(x, count = False):
     """
-    Describe how you are sorting `x`
+    Take an element e at position i to be the pivot, then place all elements less
+    than e to the left and all elements greater than e to the right. Repeat on the
+    sublists x[0:i] and x[i+1:len(x)] until the list is fully sorted.
     """
     sorted_list, assignments, conditionals = quicksort_helper(x, 0, len(x)-1)
     if not count:
@@ -59,6 +66,8 @@ def quicksort_helper(x, p, r):
         q, new_assignments, new_conditionals = partition(x, p, r)
         _, new_assignments1, new_conditionals1 = quicksort_helper(x, p, q - 1)
         _, new_assignments2, new_conditionals2 = quicksort_helper(x, q + 1, r)
+        
+        #ugly adding
         assignments += new_assignments
         assignments += new_assignments1
         assignments += new_assignments2
